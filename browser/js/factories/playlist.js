@@ -18,9 +18,8 @@ app.factory('PlaylistFactory', function($http, $q) {
 				});
 		}
 		PlaylistFactory.getById = function(playlistId) {
-				return cachedPlaylists.find(function(playlist) {
-					return playlist._id === playlistId;
-				})
+				return $http.get('api/playlists/' + playlistId)
+				.then(res => res.data);
 		}
 		PlaylistFactory.getPlaylistSongs = function(playlistId) {
 			return $http.get('/api/playlists/' + playlistId + '/songs')

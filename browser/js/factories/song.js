@@ -1,6 +1,7 @@
 app.factory('SongFactory', function ($http) {
 	var SongFactory = {};
 	SongFactory.convert = function (raw, artistObjs) {
+		console.log(artistObjs);
 		if (typeof artistObjs == 'object') {
 			var artistsById = _.indexBy(artistObjs, '_id');
 			raw.artists = raw.artists.map(function (artistId) {
